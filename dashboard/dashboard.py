@@ -128,7 +128,13 @@ col_t, col_r = st.columns([1.5, 1])
 
 with col_t:
     st.subheader("📑 Tabel Karakteristik Detail")
-    st.table(df_analysis)
+    
+    # Memformat angka agar lebih rapi:
+    # - set_index('Fitur') agar kolom Fitur menjadi judul baris
+    # - format("{:,.2f}") memberikan koma ribuan dan 2 angka desimal
+    formatted_df = df_analysis.set_index('Fitur').style.format("{:,.2f}")
+    
+    st.table(formatted_df)
 
 with col_r:
     st.subheader("💡 Strategi HR")
@@ -139,3 +145,18 @@ with col_r:
     """)
 
 st.info("📌 **Kesimpulan:** Risiko terbesar adalah kehilangan karyawan senior berharga yang terlihat 'aman' di permukaan.")
+
+# --- 9. PANDUAN TERMINOLOGI (TAMBAHAN) ---
+with st.expander("ℹ️ Memahami Istilah: Tersembunyi vs Terdeteksi"):
+    st.markdown("""
+    ### 1. Attrition Terdeteksi (Profil Junior)
+    * **Siapa mereka?** Karyawan tingkat awal (*entry-level*) atau Junior dengan usia di bawah 30 tahun dan gaji di bawah $3.000.
+    * **Karakteristik:** Memiliki pola pengunduran diri yang dapat diprediksi oleh sistem karena faktor gaji dan jenjang karier singkat.
+    * **Dampak Bisnis:** Risiko operasional yang cenderung mudah diantisipasi melalui rekrutmen rutin.
+
+    ### 2. Attrition Tersembunyi (Profil Senior / High-Value)
+    * **Siapa mereka?** Karyawan mapan dengan usia di atas 32 tahun dan gaji di atas $4.000.
+    * **Mengapa disebut 'Tersembunyi'?** Karena indikator finansial mereka terlihat sangat stabil (gaji tinggi), sehingga sering dianggap 'aman' oleh manajemen.
+    * **Faktor Risiko Laten:** Pemicu utama mereka keluar adalah faktor non-finansial, seperti **jarak rumah yang jauh (>10km)** yang memicu kelelahan fisik (*burnout*).
+    * **Dampak Bisnis:** Risiko strategis yang sangat tinggi karena perusahaan kehilangan mentor, keahlian teknis mendalam, dan biaya penggantian yang sangat mahal.
+    """)
