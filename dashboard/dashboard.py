@@ -30,7 +30,6 @@ df_analysis = pd.DataFrame(summary_data)
 df_melted = df_analysis.melt(id_vars='Fitur', var_name='Kelompok', value_name='Nilai')
 
 # --- 4. SIDEBAR: MENU INPUT PREDIKSI ---
-# --- 4. SIDEBAR: MENU INPUT PREDIKSI ---
 st.sidebar.header("📋 Input Data Karyawan")
 st.sidebar.write("Pilih ID Karyawan untuk memuat data otomatis.")
 
@@ -74,28 +73,105 @@ st.title("📊 HR Business Insight: Analisis Blind Spot Attrition")
 st.markdown("Dashboard ini mendeteksi karyawan yang berisiko keluar namun sering luput dari sistem (Blind Spot).")
 st.markdown("---")
 
-# --- 6. LOGIKA HASIL PREDIKSI (Jika Tombol Diklik) ---
+# --- 6. LOGIKA HASIL PREDIKSI (Jika Tombol Diklik) ---# --- 6. LOGIKA HASIL PREDIKSI (Perbaikan Grafik Komparatif) ---
 if btn_predict:
     st.subheader(f"🔍 Hasil Analisis untuk: {nama}")
     
-    # Logika berdasarkan profil Tersembunyi (High Value Risk)
-    if gaji > 4000 and usia > 32 and jarak > 10:
-        st.error(f"⚠️ **PERINGATAN KRITIS:** {nama} memiliki profil **'Tersembunyi (High-Value)'**. Risiko keluar tinggi namun sulit terdeteksi sistem karena faktor kemapanan.")
-        st.info("💡 **Rekomendasi:** Berikan kebijakan Work-from-Home atau promosi internal segera.")
-    elif gaji < 3000 and usia < 30:
-        st.warning(f"🟡 **RISIKO TERDETEKSI:** {nama} masuk profil 'Junior'. Pola attrition-nya mudah dipantau oleh sistem HR standar.")
-    else:
-        st.success(f"✅ **STABIL:** {nama} saat ini berada dalam profil karyawan yang cenderung stabil.")
-
-    # Grafik Perbandingan Input vs Benchmark
-    input_values = [gaji, usia, jarak, pengalaman, kepuasan]
-    df_compare = df_analysis.copy()
-    df_compare[nama] = input_values
+    # Menentukan Kelompok Benchmark yang relevan
+    # Jika gaji > 4000, dia dibandingkan dengan profil Senior, jika tidak dengan Junior
+    target_benchmark = 'Tersembunyi (Senior)' if gaji > 4000 else 'Terdeteksi (Junior)'
     
-    fig_user = px.bar(df_compare.melt(id_vars='Fitur'), x='Fitur', y='value', color='variable',
-                     barmode='group', title=f"Perbandingan {nama} vs Profil Benchmark")
-    st.plotly_chart(fig_user, use_container_width=True)
-    st.markdown("---")
+    # 1. Pesan Peringatan
+    if gaji > 4000 and usia > 32 and jarak > 10:
+        st.error(f"⚠️ **PERINGATAN KRITIS:** {nama} mendekati profil **'{target_benchmark}'**.")
+    elif gaji < 3000 and usia < 30:
+        st.warning(f"🟡 **RISIKO TERDETEKSI:** {nama} sesuai dengan pola **'{target_benchmark}'**.")
+    else:
+        st.success(f"✅ **STABIL:** {nama} berada di bawah ambang batas risiko kelompoknya.")
+
+    # --- PERBAIKAN VISUALISASI: HEAD-TO-HEAD COMPARISON ---
+    
+    # Ambil data individu dan benchmark yang relevan saja
+    df_head_to_head = df_analysis[['Fitur', target_benchmark]].copy()
+    df_head_to_head[nama] = [gaji, usia, jarak, pengalaman, kepuasan]
+    
+    # Melt untuk keperluan Plotly
+    df_plot = df_head_to_head.melt(id_vars='Fitur', var_name='Kategori', value_name='Nilai')
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # Perbandingan Gaji (Skala Besar)
+        fig_gaji = px.bar(
+            df_plot[df_plot['Fitur'] == 'Gaji (Monthly)'],
+            x='Kategori', y='Nilai', color='Kategori',
+            title=f"Analisis Gaji: {nama} vs Rata-rata {target_benchmark}",
+            text_auto='.2s',
+            color_discrete_map={nama: '#00CC96', target_benchmark: '#EF553B'}
+        )
+        st.plotly_chart(fig_gaji, use_container_width=True)
+
+    with col2:
+        # Perbandingan Faktor Risiko Lain (Skala Kecil)
+        fig_risiko = px.bar(
+            df_plot[df_plot['Fitur'] != 'Gaji (Monthly)'],
+            x='Fitur', y='Nilai', color='Kategori',
+            barmode='group',
+            title="Analisis Faktor Perilaku & Usia",
+            color_discrete_map={nama: '#00CC96', target_benchmark: '#EF553B'}
+        )
+        st.plotly_chart(fig_risiko, use_container_width=True)
+
+    # --- KESIMPULAN OTOMATIS BERDASARKAN SELISIH ---
+    selisih_jarak = jarak - df_analysis.loc[df_analysis['Fitur'] == 'Jarak Rumah', target_benchmark].values[0]
+    
+    st.info(f"""
+    **Insight Utama:** {nama} memiliki jarak rumah **{abs(selisih_jarak):.1f} km {'lebih jauh' if selisih_jarak > 0 else 'lebih dekat'}** dibandingkan rata-rata karyawan kelompok {target_benchmark} yang telah keluar. 
+    Hal ini merupakan indikator penting dalam menentukan tingkat kelelahan (*burnout*) karyawan.
+    """)
+    
+    # --- 6.1 KESIMPULAN DETAIL (Dinamis) ---
+    st.write("### 📝 Kesimpulan Strategis")
+    
+    with st.container():
+        # Kasus 1: Senior / Hidden Risk
+        if gaji > 4000 and usia > 32 and jarak > 10:
+            st.markdown(f"""
+            **Analisis Profil:** {nama} adalah aset **High-Value (Senior)** bagi perusahaan. Meskipun secara finansial (Gaji: ${gaji:,}) terlihat sangat mapan, faktor risiko utama adalah **jarak rumah ({jarak} km)** yang cukup signifikan.
+            
+            **Potensi Blind Spot:** - Perusahaan sering menganggap karyawan seperti {nama} setia karena posisi dan gajinya. 
+            - Namun, beban perjalanan harian dapat memicu kelelahan fisik (*burnout*) yang tidak terdeteksi oleh survei kepuasan standar.
+            
+            **Rekomendasi Utama:**
+            - Segera tawarkan opsi kerja jarak jauh (*Work-from-Home*) atau jadwal fleksibel.
+            - Lakukan diskusi empat mata mengenai rencana jangka panjang sebelum karyawan mencapai titik jenuh.
+            """)
+            
+        # Kasus 2: Junior / Detected Risk
+        elif gaji < 3000 and usia < 30:
+            st.markdown(f"""
+            **Analisis Profil:** {nama} termasuk dalam kategori **Junior/Entry-level**. Tingkat pengunduran diri pada kelompok ini secara historis memang tinggi (*predictable*).
+            
+            **Faktor Pendorong:** - Umumnya didorong oleh motivasi mencari kenaikan gaji signifikan atau percepatan karier di tempat lain.
+            - Dengan usia {usia} tahun, motivasi eksplorasi karier masih sangat dominan.
+            
+            **Rekomendasi Utama:**
+            - Berikan program bimbingan (*mentorship*) untuk meningkatkan keterikatan emosional dengan perusahaan.
+            - Tinjau kembali struktur kenaikan gaji berkala agar tetap kompetitif di pasar.
+            """)
+            
+        # Kasus 3: Karyawan Stabil
+        else:
+            st.markdown(f"""
+            **Analisis Profil:** Saat ini, {nama} berada dalam profil **Karyawan Stabil**. Parameter gaji, usia, dan kenyamanan kerja berada pada titik keseimbangan yang baik.
+            
+            **Wawasan:** - Tidak ditemukan anomali yang menunjukkan tanda-tanda pengunduran diri dalam waktu dekat.
+            - Tetap pantau skor kepuasan kerja (saat ini: {kepuasan}/4) agar tidak mengalami penurunan drastis.
+            
+            **Rekomendasi Utama:**
+            - Pertahankan kondisi kerja saat ini. 
+            - Libatkan dalam proyek-proyek strategis untuk menjaga motivasi jangka panjang.
+            """)
 
 # --- 7. TIGA GRAFIK VISUALISASI UTAMA ---
 st.subheader("📈 Visualisasi Tren Attrition")
