@@ -7,7 +7,7 @@ import os
 st.set_page_config(page_title="HR Attrition Insights Dashboard", layout="wide")
 
 # --- 2. LOAD DATA DARI CSV ---
-@st.cache_data
+# @st.cache_data
 # def load_data():
 #     base_path = os.path.dirname(__file__)
 #     csv_path = os.path.join(base_path, 'employee_data_cleaned.csv')
