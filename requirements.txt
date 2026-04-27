@@ -5,7 +5,5 @@ numpy
 scipy
 matplotlib
 seaborn
-jupyter
-sqlalchemy
 scikit-learn
 joblib
