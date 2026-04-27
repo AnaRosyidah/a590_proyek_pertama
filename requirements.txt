@@ -4,7 +4,7 @@ plotly
 numpy
 scipy
 matplotlib
-seaborn 
+seaborn
 jupyter
 sqlalchemy
 scikit-learn==1.2.2
