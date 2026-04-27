@@ -118,19 +118,22 @@ pip install streamlit pandas plotly scikit-learn imbalanced-learn
 
 # Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
 
-1. Deskripsi Umum
-Dashboard HR Business Insight: Analisis Blind Spot Attrition adalah alat analisis data berbasis web yang dirancang untuk membantu departemen Sumber Daya Manusia (HR) dalam mengidentifikasi risiko pengunduran diri karyawan (attrition). Berbeda dengan sistem pemantauan standar, dashboard ini memiliki keunggulan dalam mendeteksi "Blind Spot"—yaitu karyawan berharga (Senior/High-Value) yang terlihat stabil di permukaan namun memiliki risiko keluar yang tinggi.
+## Business Dashboard
 
-2. Masalah Bisnis yang Diselesaikan
-Perusahaan sering kali kehilangan aset terbaiknya (karyawan Senior) karena hanya fokus pada indikator umum seperti gaji. Dashboard ini menjawab tantangan tersebut dengan:
+Dashboard yang dikembangkan dalam proyek ini terdiri dari dua platform utama untuk memberikan wawasan komprehensif bagi departemen HR:
 
-- Memisahkan profil risiko antara karyawan Junior (Terdeteksi) dan Senior (Tersembunyi).
+### 1. Metabase Business Dashboard (Kriteria Utama)
+Dashboard ini dibuat menggunakan Metabase untuk memonitor faktor-faktor pendorong attrition secara makro. 
+- **Fokus Utama:** Visualisasi hubungan antara lembur (OverTime), kepuasan kerja, dan pendapatan terhadap tingkat Attrition.
+- **Akses Reviewer:** File database Metabase telah disertakan dalam lampiran pengiriman (`metabase.db.mv.db`) sesuai instruksi.
+- **Kredensial Login:**
+    - **Email:** ana.rosyidah24@gmail.com
+    - **Password:** Rosyidah89
 
-- Mengidentifikasi faktor laten (tersembunyi) seperti jarak rumah dan kejenuhan karier yang sering diabaikan.
-
-- Memberikan rekomendasi strategis yang dipersonalisasi untuk setiap profil karyawan.
-
-Link Akses Dashboard: https://a590proyekpertama-ana.streamlit.app/
+### 2. Streamlit HR Attrition Insights (Interactive Dashboard)
+Sebagai alat bantu interaktif, dibuat pula dashboard berbasis Python Streamlit untuk deteksi risiko karyawan secara individual (Blind Spot Detection).
+- **Link Akses:** https://a590proyekpertama-ana.streamlit.app/
+- **Fitur Utama:** Simulasi risiko berdasarkan input parameter karyawan dan perbandingan benchmark terhadap profil Senior vs Junior.
 
 ## Conclusion
 

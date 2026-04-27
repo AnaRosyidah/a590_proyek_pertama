@@ -8,16 +8,44 @@ st.set_page_config(page_title="HR Attrition Insights Dashboard", layout="wide")
 
 # --- 2. LOAD DATA DARI CSV ---
 @st.cache_data
+# def load_data():
+#     base_path = os.path.dirname(__file__)
+#     csv_path = os.path.join(base_path, 'employee_data_cleaned.csv')
+    
+#     if os.path.exists(csv_path):
+#         df = pd.read_csv(csv_path)
+#         df['Status_Attrition'] = df['Attrition'].map({1: 'Leave', 0: 'Stay'})
+#         return df
+#     return None
+# @st.cache_data
+# def load_data():
+#     # Mengambil path absolut dari file dashboard.py berada
+#     base_path = os.path.dirname(os.path.abspath(__file__))
+#     # Menggabungkan dengan nama file (asumsi CSV satu folder dengan script)
+#     csv_path = os.path.join(base_path, 'employee_data_cleaned.csv')
+    
+#     if os.path.exists(csv_path):
+#         df = pd.read_csv(csv_path)
+#         df['Status_Attrition'] = df['Attrition'].map({1: 'Leave', 0: 'Stay'})
+#         return df
+#     else:
+#         st.error(f"File tidak ditemukan di: {csv_path}")
+#     return None
+@st.cache_data
 def load_data():
-    base_path = os.path.dirname(__file__)
+    # Mengambil path absolut dari file dashboard.py berada
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    # Menggabungkan dengan nama file (asumsi CSV satu folder dengan script)
     csv_path = os.path.join(base_path, 'employee_data_cleaned.csv')
     
     if os.path.exists(csv_path):
         df = pd.read_csv(csv_path)
         df['Status_Attrition'] = df['Attrition'].map({1: 'Leave', 0: 'Stay'})
         return df
+    else:
+        st.error(f"File tidak ditemukan di: {csv_path}")
     return None
-
+    
 df_raw = load_data()
 
 # --- 3. PREPARASI DATA BENCHMARK ---
