@@ -131,9 +131,17 @@ Dashboard ini dibuat menggunakan Metabase untuk memonitor faktor-faktor pendoron
     - **Password:** Rosyidah89
 
 ### 2. Streamlit HR Attrition Insights (Interactive Dashboard)
-Sebagai alat bantu interaktif, dibuat pula dashboard berbasis Python Streamlit untuk deteksi risiko karyawan secara individual (Blind Spot Detection).
-- **Link Akses:** https://a590proyekpertama-ana.streamlit.app/
-- **Fitur Utama:** Simulasi risiko berdasarkan input parameter karyawan dan perbandingan benchmark terhadap profil Senior vs Junior.
+Streamlit HR Attrition Insights (Local Deployment)
+Sebagai alat bantu interaktif untuk deteksi risiko karyawan secara individual (Blind Spot Detection), dashboard ini dapat dijalankan di lingkungan lokal dengan langkah-langkah berikut:
+
+* Cara Menjalankan Perintah:
+  Buka Command Prompt (cmd) atau PowerShell, arahkan ke direktori proyek Anda, lalu jalankan perintah:
+
+PowerShell
+ 
+    *python -m streamlit run dashboard.py*
+
+Catatan: Di Windows, perintah yang digunakan umumnya adalah python. Pastikan Anda telah menginstal pustaka yang diperlukan (pip install streamlit) sebelum menjalankan perintah tersebut.
 
 ## Conclusion
 
