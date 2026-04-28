@@ -114,12 +114,40 @@ Sekarang semua alat dan bahan sudah siap! Selanjutnya, kita akan langsung masuk 
 Dashboard yang dikembangkan dalam proyek ini terdiri dari dua platform utama untuk memberikan wawasan komprehensif bagi departemen HR:
 
 ### 1. Metabase Business Dashboard (Kriteria Utama)
-Dashboard ini dibuat menggunakan Metabase untuk memonitor faktor-faktor pendorong attrition secara makro. 
-- **Fokus Utama:** Visualisasi hubungan antara lembur (OverTime), kepuasan kerja, dan pendapatan terhadap tingkat Attrition.
-- **Akses Reviewer:** File database Metabase telah disertakan dalam lampiran pengiriman (`metabase.db.mv.db`) sesuai instruksi.
-- **Kredensial Login:**
-    - **Email:** ana.rosyidah24@gmail.com
-    - **Password:** Rosyidah89
+
+Silakan ikuti langkah-langkah di bawah ini untuk menjalankan environment Metabase menggunakan Docker.
+
+1. Spesifikasi Environment
+Versi Metabase: v0.49.13
+
+File Database: metabase.db.mv.db (Sudah disertakan dalam root folder proyek).
+
+2. Langkah-Langkah Menjalankan
+Buka terminal pada folder proyek, lalu jalankan perintah berikut secara berurutan:
+
+A. Menarik Image Metabase (Pull Image)
+
+* docker pull metabase/metabase:v0.49.13
+
+B. Menjalankan Container Metabase
+
+* docker run -d -p 3000:3000 --name metabase_check metabase/metabase:v0.49.13
+
+C. Menyalin File Database ke Dalam Container
+Agar dashboard yang telah dibuat dapat muncul, file database harus disalin ke dalam container yang sedang berjalan:
+
+* docker cp metabase.db.mv.db metabase_check:/metabase.db/metabase.db.mv.db
+
+D. Melakukan Restart Container
+Restart diperlukan agar Metabase membaca file database yang baru saja disalin:
+* docker restart metabase_check 
+3. Akses Dashboard & Kredensial
+Tunggu sekitar 1-2 menit hingga proses inisialisasi selesai, kemudian akses melalui browser di:
+
+URL: http://localhost:3000
+Username: ana.rosyidah24@gmail.com
+Password: Rosyidah89
+
 
 ## ConclusionKesimpulan Akhir Proyek: Analisis Risiko Pengunduran Diri
 Melalui proyek ini, saya berhasil memetakan alasan-alasan di balik keluarnya karyawan yang selama ini mungkin luput dari pengawasan manajemen. Analisis ini menunjukkan bahwa penyebab resign tidak sesederhana masalah gaji saja. Berikut adalah poin-poin kesimpulannya:
