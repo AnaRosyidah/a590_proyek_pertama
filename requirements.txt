@@ -1,5 +1,3 @@
-# Library Utama Dashboard & UI
-streamlit==1.34.0
 # Manipulasi & Analisis Data
 pandas==2.2.2
 numpy==1.26.4

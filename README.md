@@ -2,121 +2,112 @@
 
 ## Business Understanding
 
-# Jelaskan latar belakang bisnis dari perushaan tersebut.
-🏢 Profil dan Latar Belakang Bisnis
-Perusahaan ini merupakan sebuah entitas korporasi modern berskala besar yang beroperasi di sektor teknologi dan riset. Perusahaan memiliki struktur organisasi yang kompleks dengan fokus utama pada inovasi dan pelayanan pelanggan.
+Kondisi dan Gambaran Umum Bisnis
+Setelah mengeksplorasi dataset ini, saya melihat bahwa perusahaan yang sedang dianalisis adalah perusahaan teknologi dan riset dengan skala operasional yang cukup masif. Fokus utama bisnis mereka nampaknya terletak pada inovasi produk, yang terlihat dari besarnya porsi sumber daya manusia di bagian pengembangan.
 
-1. Struktur Organisasi dan Operasional
-Berdasarkan data, perusahaan ini terbagi menjadi tiga departemen utama yang menjadi pilar bisnisnya:
+1. Fokus Departemen dan Roda Bisnis
+Dari data yang ada, operasional perusahaan bertumpu pada tiga pilar utama. Bagian Research & Development (R&D) menjadi jantung perusahaan dengan jumlah tim paling banyak, disusul oleh tim Sales yang bergerak di garis depan untuk menjaga pendapatan, serta Human Resources yang mengelola administrasi lebih dari seribu karyawan agar koordinasi internal tetap terjaga.
 
-- Research & Development (R&D): Departemen terbesar yang menunjukkan bahwa perusahaan sangat bergantung pada inovasi produk dan pengembangan teknologi.
+2. Karakteristik SDM dan Keahlian khusus
+Karyawan di perusahaan ini bukan pekerja umum, melainkan tenaga ahli dengan latar belakang pendidikan yang sangat spesifik, seperti Life Sciences dan medis. Hal ini mengindikasikan bahwa bisnis yang dijalankan kemungkinan besar bergerak di industri yang sangat teknis, misalnya manufaktur perangkat kesehatan atau bidang farmasi.
 
-- Sales: Divisi ujung tombak yang memastikan penetrasi pasar dan pendapatan perusahaan tetap stabil.
+3. Lingkungan Kerja dan Tekanan Operasional
+Saya menemukan beberapa poin penting mengenai dinamika kerja sehari-hari di sini:
 
-- Human Resources (HR): Divisi pendukung yang mengelola lebih dari 1.000 karyawan untuk menjaga stabilitas internal.
+Mobilitas Tinggi: Perjalanan dinas sudah menjadi hal biasa bagi karyawan, baik yang sifatnya jarang maupun rutin. Ini menandakan perusahaan memiliki jaringan klien yang cukup luas.
 
-2. Diversitas Tenaga Kerja (Talent Pool)
-Perusahaan memiliki tenaga kerja yang sangat beragam dalam hal latar belakang pendidikan dan spesialisasi, mulai dari bidang Life Sciences, Medical, Marketing, hingga Technical Degree. Ini menunjukkan bahwa perusahaan menjalankan bisnis yang membutuhkan keahlian teknis tinggi (misalnya: manufaktur alat medis, farmasi, atau teknologi laboratorium).
+Beban Kerja: Adanya catatan lembur di beberapa posisi menunjukkan bahwa tekanan pekerjaan cukup tinggi, mungkin karena target penjualan atau tenggat waktu riset yang ketat.
 
-3. Dinamika Lingkungan Kerja
-Bisnis perusahaan ditandai dengan mobilitas dan ritme kerja yang dinamis:
-
-- Business Travel: Karyawan sering melakukan perjalanan bisnis (Travel_Rarely hingga Travel_Frequently), yang menunjukkan perusahaan memiliki jaringan klien atau cabang yang luas.
-
-- Overtime (Lembur): Adanya budaya kerja lembur di beberapa posisi mencerminkan tekanan target atau proyek riset dengan deadline ketat.
-
-- Career Progression: Terdapat tingkatan jabatan yang jelas (Job Level 1 sampai 5), dari staf pelaksana hingga manajer senior.
+Struktur Karier: Perusahaan sudah memiliki jenjang karier yang tertata rapi dari level staf (Level 1) hingga posisi manajerial tertinggi (Level 5), yang artinya ada ruang bagi karyawan untuk terus naik jabatan.
 
 ### Permasalahan Bisnis
 
-# Tuliskan seluruh permasalahan bisnis yang akan diselesaikan.
+Identifikasi Masalah Bisnis
+Masalah utama yang saya temukan bukan hanya soal banyaknya orang yang keluar, tapi perusahaan sepertinya "kecolongan" karena tidak bisa melihat siapa saja karyawan penting yang sebenarnya sudah tidak betah. Masalah ini bisa saya bagi menjadi beberapa poin:
 
-Rumusan Permasalahan Bisnis (Business Problem Statements)
-Permasalahan utama yang dihadapi perusahaan bukan sekadar jumlah karyawan yang keluar, melainkan ketidakmampuan sistem dalam membedakan profil risiko yang berdampak pada kerugian aset manusia yang berharga. Secara detail, permasalahan tersebut mencakup:
+1. Penanganan yang Terlambat (Sifatnya Reaktif)
+Selama ini perusahaan baru bertindak setelah karyawan mengajukan surat resign. Ini sangat merugikan karena biaya untuk mencari dan melatih orang baru itu sangat mahal. Masalahnya adalah bagaimana kita bisa tahu lebih awal sebelum mereka benar-benar pergi.
 
-1. Prediksi Kehilangan Karyawan (Attrition Prediction)
-Masalah mendasar adalah bagaimana perusahaan dapat memprediksi secara akurat apakah seorang karyawan akan mengundurkan diri atau bertahan. Tanpa model prediksi, perusahaan bersifat reaktif—hanya bertindak setelah surat pengunduran diri diterima—yang berujung pada biaya rekrutmen dan pelatihan ulang yang tinggi.
+2. Tidak Tahu Alasan Sebenarnya di Balik Resign
+Perusahaan sering salah menebak alasan karyawan keluar. Dari data, ada dua kelompok yang alasannya bertolak belakang:
 
-2. Identifikasi Faktor Penyebab Attrition (Causal Factors Identification)
-Perusahaan sering kali gagal memahami alasan sebenarnya di balik pengunduran diri. Masalah ini terbagi menjadi dua fokus utama yang selaras dengan temuan data:
+* Kelompok Junior: Apakah mereka keluar cuma karena gaji kecil, atau ada faktor lain yang membuat mereka tidak betah di awal karier?
 
-- Masalah pada Profil Junior (Risiko Terdeteksi): Mengapa karyawan muda dengan gaji tingkat awal cenderung memiliki tingkat perputaran (turnover) yang tinggi? Apakah faktor finansial merupakan satu-satunya pemicu?
+* Kelompok Senior: Ini yang paling berbahaya. Mereka gajinya sudah besar (rata-rata $5.560), tapi tetap keluar. Ada masalah dalam mendeteksi pemicu selain uang, seperti capek karena rumahnya jauh atau merasa bosan dengan kerjaan yang itu-itu saja.
 
-- Masalah pada Profil Senior (Risiko Tersembunyi/Blind Spot): Mengapa karyawan berpengalaman dengan gaji tinggi (rata-rata $5.560) tetap memilih untuk keluar? Perusahaan memiliki masalah dalam mendeteksi pemicu non-finansial seperti beban perjalanan (Jarak Rumah) dan stagnansi peran yang tidak tertangkap oleh survei kepuasan standar.
+3. Salah Sangka Terhadap Karyawan Lama
+Ada anggapan bahwa karyawan senior itu "aman" karena posisinya sudah mapan. Padahal, banyak dari mereka yang tingkat kepuasannya di level menengah (skor 2,50). Mereka tidak terlihat marah atau protes, tapi diam-diam berencana keluar. Masalahnya, sistem HR yang sekarang tidak bisa menangkap sinyal halus seperti ini.
 
-3. Kegagalan Deteksi Dini pada Aset Bernilai Tinggi (High-Value Talent Loss)
-Terdapat kesenjangan (gap) di mana model prediksi atau manajemen sering kali menganggap karyawan senior "aman" karena posisi dan kemapanannya. Permasalahan bisnisnya adalah bagaimana mendeteksi karyawan yang berada di zona kepuasan "moderat" (skor 2,50) yang sebenarnya menyimpan keinginan laten untuk keluar namun tidak terdeteksi oleh radar HR konvensional.
-
-4. Inefisiensi Strategi Retensi (Non-Targeted Interventions)
-Permasalahan terakhir adalah pemberian solusi yang tidak tepat sasaran. Perusahaan sering memberikan kenaikan gaji untuk mencegah attrition, padahal bagi kelompok senior, masalah utamanya adalah kelelahan fisik akibat jarak rumah. Permasalahan bisnisnya adalah menentukan siapa yang membutuhkan kebijakan Hybrid Work dan siapa yang membutuhkan program Career Enrichment.
+4. Solusi yang Tidak Tepat Sasaran
+Seringkali perusahaan hanya mengandalkan kenaikan gaji untuk menahan orang agar tidak resign. Padahal, untuk karyawan senior, uang bukan masalah utama, melainkan kelelahan fisik. Masalah bisnisnya adalah kita belum bisa membedakan siapa yang butuh kebijakan kerja fleksibel (hybrid) dan siapa yang butuh tantangan baru atau promosi.
 
 ### Cakupan Proyek
 
-# Tuliskan cakupan proyek yang akan dikerjakan.
-1. Tujuan Utama (Objective)
-    - Membangun model prediktif untuk menentukan probabilitas seorang karyawan akan mengundurkan diri (Attrition).
+Sasaran dan Ruang Lingkup Proyek
+1. Tujuan yang Ingin Dicapai
+Dalam proyek ini, saya berfokus pada dua hal utama:
 
-    - Melakukan analisis mendalam untuk mengidentifikasi variabel atau faktor pendorong utama (key drivers) yang menyebabkan karyawan meninggalkan perusahaan.
+* Membuat Model Prediksi: Membangun sistem yang bisa menghitung seberapa besar kemungkinan seorang karyawan akan resign (Attrition) di masa depan.
 
-2. Data dan Variabel yang Terlibat
-Proyek ini akan mengolah dataset karyawan dengan rincian variabel sebagai berikut:
+* Mencari Faktor Penyebab: Melakukan bedah data untuk mengetahui variabel apa saja yang paling sering memicu karyawan untuk meninggalkan perusahaan (key drivers).
 
-- Variabel Target: Label biner Attrition, di mana nilai 1 merepresentasikan karyawan yang keluar dan nilai 0 merepresentasikan karyawan yang bertahan.
+2. Data yang Digunakan
+Analisis ini menggunakan data karyawan dengan pembagian sebagai berikut:
 
-- Fitur Prediktor:
+Target Analisis: Kolom Attrition, yang menjadi acuan utama (Nilai 1 untuk yang keluar, dan 0 untuk yang tetap bertahan).
 
-    * Fitur Numerik: Meliputi aspek demografi dan finansial seperti usia (Age), pendapatan bulanan (MonthlyIncome), jarak rumah ke kantor (DistanceFromHome), serta indikator loyalitas seperti total masa kerja (TotalWorkingYears) dan lama bekerja di perusahaan (YearsAtCompany).
+Data Pendukung (Prediktor):
 
-    * Fitur Kategorikal: Meliputi aspek operasional dan status karyawan seperti frekuensi perjalanan bisnis (BusinessTravel), departemen, peran pekerjaan (JobRole), status pernikahan, dan keberadaan kerja lembur (OverTime).
+* Data Angka (Numerik): Saya akan melihat pengaruh umur, gaji bulanan, jarak dari rumah ke kantor, serta pengalaman kerja (total masa kerja dan lama bekerja di perusahaan ini).
 
-3. Batasan dan Pembersihan Data (Data Cleaning & Filtering)
-Untuk menjaga integritas dan relevansi model, proyek ini akan mengeksklusi variabel yang tidak memiliki variansi (konstan) atau tidak memberikan nilai informasi bagi model prediktif, antara lain:
+* Data Kategori: Meliputi riwayat perjalanan dinas, departemen tempat bekerja, posisi/jabatan, status pernikahan, hingga ada atau tidaknya jam lembur.
 
-- EmployeeCount (seluruh nilai bernilai 1).
+3. Pembersihan dan Penyaringan Data
+Agar hasil prediksinya akurat, saya telah menyaring data dan membuang kolom yang tidak berguna. Ada beberapa kolom yang isinya sama semua untuk seluruh karyawan sehingga tidak memberikan informasi apa pun dalam analisis, yaitu:
 
-- Over18 (seluruh nilai bernilai "Y").
+* EmployeeCount: Isinya hanya angka 1 di semua baris.
 
-- StandardHours (seluruh nilai bernilai 80).
+* Over18: Semua karyawan sudah dewasa (berusia di atas 18 tahun).
+
+* StandardHours: Jam kerja standar semuanya sama, yaitu 80 jam.
 
 ### Persiapan
 
-1. Sumber Data (Data Source)
-Data yang digunakan dalam proyek ini berasal dari dataset internal perusahaan yang telah dibersihkan, dengan detail sebagai berikut:
+Persiapan
+Pada tahap ini, saya akan menyiapkan yang dibutuhkan sebelum masuk ke inti analisis. Saya akan mulai dari menyiapkan data hasil pembersihan hingga mengatur database lokal dan visualisasi menggunakan Docker.
 
-Nama File: employee_data_cleaned.csv
+* Menyiapkan Data
+Data utama yang digunakan dalam proyek ini adalah hasil dari proses pembersihan dan seleksi fitur yang telah dilakukan sebelumnya.
 
-Format: CSV (Comma Separated Values)
+- Dataset Utama: employee_data.csv[https://github.com/dicodingacademy/dicoding_dataset/tree/main/employee]
 
-Ukuran Data: 1.058 baris dengan 32 kolom (fitur).
+- Detail: Dataset ini mencakup 1.058 entri karyawan dengan 32 parameter (fitur), mencakup data demografi, performa, hingga status attrition.
 
-Deskripsi: Dataset ini berisi informasi komprehensif mengenai profil karyawan, termasuk metrik demografi, performa, tingkat kepuasan, dan status pengunduran diri (attrition).
+- Penyimpanan: File ini saya simpan di dalam direktori dashboard/ sebagai sumber data utama yang akan diproses lebih lanjut ke dalam database.
 
-Setup environment:
+* Menyiapkan Environment Proyek
+Untuk menjaga konsistensi pengerjaan, saya membagi proses ini menjadi analisis data di Google Colab dan pengelolaan database serta visualisasi di lingkungan lokal.
 
-Tentu, penjelasan Anda sangat bagus karena mencakup alur kerja nyata dari tahap riset hingga tahap publikasi (deployment). Penjelasan ini menunjukkan bahwa Anda memahami proses Data Science secara utuh.
+1. Instalasi Library (Requirements)
+Saya menggunakan library spesifik agar proses manipulasi data dan pembuatan model machine learning tetap stabil. Berikut adalah daftar library yang perlu disiapkan:
 
-Berikut adalah versi kalimat yang lebih rapi dan profesional untuk bab Setup Environment di laporan Anda, berdasarkan cerita yang Anda sampaikan:
+pip install pandas==2.2.2 numpy==1.26.4 scipy==1.13.0 sqlalchemy==2.0.29
+pip install matplotlib==3.8.4 seaborn==0.13.2 plotly==5.20.0
+pip install scikit-learn==1.4.2 imbalanced-learn==0.12.2 joblib==1.4.0
 
-2. Setup Environment
-Dalam pengembangan proyek ini, lingkungan kerja (environment) disusun melalui beberapa tahap, mulai dari pengolahan data hingga publikasi dashboard:
+2. Pengaturan Database dan Kontainerisasi
+Agar integrasi data lebih rapi dan monitoring menjadi lebih luas, saya menggunakan kombinasi SQLite dan Docker:
 
-- Platform Analisis: Proses analisis data awal, pembersihan, hingga pembuatan model prediksi dilakukan menggunakan Google Colab. Tahap ini menghasilkan file data final yang diberi nama employee_data_cleaned.csv.
+* Database Karyawan (SQLite): Saya menggunakan SQLite untuk menyimpan data karyawan. Penggunaan SQLite dipilih karena ringan dan tidak memerlukan konfigurasi server yang rumit, namun tetap kuat saat diintegrasikan dengan SQLAlchemy di dalam kode Python.
 
-- Editor Kode: Pembuatan kode aplikasi dashboard dilakukan menggunakan Visual Studio Code (VS Code) di perangkat lokal, dengan memanfaatkan fitur Terminal terintegrasi untuk menjalankan pengujian aplikasi secara real-time.
+* Monitoring dengan Metabase (Docker): Untuk keperluan visualisasi tambahan yang lebih dinamis, saya menjalankan Metabase melalui Docker.
 
-- Sumber Data: Sesuai dengan spesifikasi proyek dari Dicoding, seluruh analisis wajib menggunakan dataset yang telah disediakan. File employee_data_cleaned.csv digunakan sebagai sumber data utama yang dibaca oleh aplikasi dashboard.
+* Persistent Data: Saya memastikan riwayat visualisasi tetap tersimpan aman di dalam database Metabase (metabase.db.mv.db) yang dikelola di dalam kontainer, sehingga data tidak hilang meskipun kontainer dimatikan.
 
-- Deployment: Setelah aplikasi berjalan dengan baik di lingkungan lokal, kode diunggah ke repositori GitHub dan dipublikasikan secara daring menggunakan Streamlit Community Cloud, sehingga dapat diakses melalui URL: https://a590proyekpertama-ana.streamlit.app/.
+Mengapa Alur Ini Digunakan?
+Saya memilih menggunakan SQLite agar database bersifat portabel dan mudah dibaca langsung dari folder proyek. Sementara itu, penggunaan Docker saya khususkan untuk menjalankan Metabase agar saya memiliki alat analisis tambahan yang terpisah dari kode utama. Dengan cara ini, lingkungan kerja menjadi lebih terorganisir antara tempat menyimpan data (SQLite) dan alat untuk memantaunya (Metabase).
 
-Pustaka (Library) yang Digunakan:
-Untuk menjalankan proyek ini, diperlukan instalasi beberapa pustaka Python berikut:
-
-* Instalasi library utama melalui terminal
-pip install streamlit pandas plotly scikit-learn imbalanced-learn
-
-## Business Dashboard
-
-# Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
+Sekarang semua alat dan bahan sudah siap! Selanjutnya, kita akan langsung masuk ke tahap Data Preparation untuk melihat bagaimana data ini diolah sebelum kita masuk ke tahap analisis yang lebih dalam.
 
 ## Business Dashboard
 
@@ -130,52 +121,37 @@ Dashboard ini dibuat menggunakan Metabase untuk memonitor faktor-faktor pendoron
     - **Email:** ana.rosyidah24@gmail.com
     - **Password:** Rosyidah89
 
-### 2. Streamlit HR Attrition Insights (Interactive Dashboard)
-Streamlit HR Attrition Insights (Local Deployment)
-Sebagai alat bantu interaktif untuk deteksi risiko karyawan secara individual (Blind Spot Detection), dashboard ini dapat dijalankan di lingkungan lokal dengan langkah-langkah berikut:
+## ConclusionKesimpulan Akhir Proyek: Analisis Risiko Pengunduran Diri
+Melalui proyek ini, saya berhasil memetakan alasan-alasan di balik keluarnya karyawan yang selama ini mungkin luput dari pengawasan manajemen. Analisis ini menunjukkan bahwa penyebab resign tidak sesederhana masalah gaji saja. Berikut adalah poin-poin kesimpulannya:
 
-* Cara Menjalankan Perintah:
-  Buka Command Prompt (cmd) atau PowerShell, arahkan ke direktori proyek Anda, lalu jalankan perintah:
+1. Perbedaan Karakteristik antara Karyawan Senior dan Junior
+Temuan utama saya menunjukkan adanya perbedaan mencolok antara dua kelompok ini:
 
-PowerShell
- 
-    *python -m streamlit run dashboard.py*
+Kelompok Junior: Biasanya lebih mudah diprediksi karena alasan mereka keluar cukup umum, yaitu usia yang masih muda dan gaji yang masih di level awal.
 
-Catatan: Di Windows, perintah yang digunakan umumnya adalah python. Pastikan Anda telah menginstal pustaka yang diperlukan (pip install streamlit) sebelum menjalankan perintah tersebut.
+Kelompok Senior: Ini adalah kelompok yang paling berisiko karena mereka sering dianggap loyal. Padahal, meski gaji mereka sudah tinggi (rata-rata di angka $5.560) dan sudah berpengalaman belasan tahun, mereka tetap memiliki keinginan untuk keluar karena faktor di luar uang.
 
-## Conclusion
+2. Pengaruh Jarak Rumah terhadap Kelelahan Kerja
+Data memperlihatkan adanya selisih jarak rumah yang cukup jauh (+5,4 Km) pada kelompok senior yang memilih keluar dibanding kelompok lainnya. Hal ini menandakan bahwa bagi mereka yang sudah mapan secara finansial, kenyamanan fisik dan efisiensi waktu perjalanan ke kantor jauh lebih penting daripada tambahan bonus atau gaji.
 
-# Jelaskan konklusi dari proyek yang dikerjakan.
+3. Skor Kepuasan yang Menipu
+Saya menemukan bahwa karyawan senior cenderung memberikan nilai kepuasan di angka menengah (sekitar 2,50). Di mata perusahaan, angka ini sering dianggap aman-aman saja, padahal sebenarnya ini adalah sinyal bahwa mereka mulai jenuh atau merasa kariernya sudah tidak berkembang lagi (stagnan).
 
-🏁 Konklusi Proyek: Analisis Blind Spot Attrition
-Proyek ini berhasil mengembangkan sistem deteksi dini pengunduran diri karyawan yang tidak hanya melihat pola umum, tetapi juga mengungkap risiko laten pada aset berharga perusahaan. Berdasarkan analisis data dan hasil pemodelan, disimpulkan beberapa poin utama:
+4. Usulan Perbaikan Strategi HR
+Agar perusahaan tidak kehilangan talenta terbaiknya, saya menyarankan agar kebijakan penahanan karyawan (retention) tidak lagi hanya fokus pada kenaikan gaji, melainkan pada kualitas hidup, seperti:
 
-1. Pergeseran Paradigma Risiko (Senior vs Junior)
-Proyek ini membuktikan bahwa risiko pengunduran diri tidak selalu berbanding lurus dengan gaji rendah.
+* Penerapan Kerja Hybrid: Khusus untuk karyawan yang rumahnya jauh guna mengurangi stres di perjalanan.
 
-- Profil Junior: Memiliki tingkat keluar yang tinggi namun mudah diprediksi karena polanya berkaitan erat dengan gaji awal dan usia muda.
+* Tantangan Baru (Career Enrichment): Memberikan variasi tugas atau rotasi jabatan agar karyawan lama tidak merasa bosan.
 
-- Profil Senior (High-Value): Merupakan Blind Spot utama. Mereka memiliki gaji tinggi (rata-rata $5.560) dan pengalaman matang (11 tahun), namun tetap berisiko keluar karena faktor non-finansial.
-
-2. Jarak Rumah sebagai Pemicu "Burnout" Laten
-Data menunjukkan variabel Jarak Rumah memiliki kontras yang sangat tinggi (+5,4 Km) antara kelompok senior yang keluar dibandingkan kelompok junior. Hal ini menyimpulkan bahwa bagi karyawan senior yang sudah mapan secara finansial, kenyamanan waktu dan fisik jauh lebih berharga daripada nominal gaji.
-
-3. Keterbatasan Model Standar dan Skor Kepuasan
-Ditemukan bahwa karyawan senior sering kali memberikan skor kepuasan di level "moderat" (rata-rata 2,50). Skor ini sering dianggap "aman" oleh sistem HR konvensional, padahal merupakan sinyal kejenuhan kerja atau stagnansi karier.
-
-4. Efektivitas Rekomendasi Strategis
-Sebagai tindak lanjut dari proyek ini, perusahaan disarankan untuk beralih dari strategi retensi berbasis uang ke strategi berbasis kualitas hidup, seperti:
-
-- Implementasi Hybrid Work khusus untuk menekan risiko kelelahan akibat jarak rumah yang jauh.
-
-- Program Career Enrichment untuk memberikan tantangan baru bagi karyawan berpengalaman agar tidak terjebak dalam rutinitas.
-
-- Pelaksanaan Stay Interview yang proaktif sebelum karyawan mencapai titik jenuh di masa kerja 4-5 tahun.
+* Wawancara Berkala: Melakukan diskusi pribadi secara proaktif, terutama saat karyawan memasuki masa kerja 4—5 tahun, sebelum mereka benar-benar mencapai titik jenuh.
 
 ### Rekomendasi Action Items (Optional)
+Rekomendasi Tindakan untuk Perusahaan
+Berdasarkan temuan dari data tersebut, saya menyarankan beberapa langkah nyata yang bisa segera diambil oleh tim manajemen dan HR:
 
-Berikan beberapa rekomendasi action items yang harus dilakukan perusahaan guna menyelesaikan permasalahan atau mencapai target mereka.
+* Penerapan Pola Kerja Hybrid: Untuk rekan-rekan di level senior yang tinggalnya cukup jauh dari kantor (di atas 12 km), perusahaan sebaiknya mulai menerapkan sistem kerja fleksibel. Mengurangi frekuensi perjalanan ke kantor bagi mereka akan sangat membantu menjaga kebugaran fisik dan mental, sehingga risiko keluar karena faktor kelelahan perjalanan bisa ditekan.
 
-- Fleksibilitas Kerja: Bagi kelompok senior yang memiliki jarak rumah jauh (>12 km), pertimbangkan kebijakan kerja dikantor dan dirumah (hybrid work) untuk mengurangi faktor kelelahan fisik.
-- Pengayaan Karier (Career Enrichment): Jangan hanya mengandalkan kenaikan gaji. Karyawan senior membutuhkan tantangan baru atau rotasi posisi untuk mengatasi kejenuhan kerja.
-- Pendekatan Proaktif (Proactive Engagement): Tetap Lakukan wawancara (stay interview) khusus bagi karyawan dengan masa kerja 4—5 tahun (titik jenuh kelompok senior), meskipun skor kepuasan mereka terlihat berada di level rata-rata.
+* Penyegaran Peran dan Tanggung Jawab: Kita tidak bisa hanya mengandalkan kenaikan gaji untuk menahan karyawan senior. Perlu ada program rotasi jabatan atau pemberian tanggung jawab pada proyek baru yang lebih menantang. Hal ini penting agar mereka tidak merasa terjebak dalam rutinitas yang membosankan setelah bekerja sekian lama.
+
+* Diskusi Santai Berkala (Stay Interview): HR perlu lebih proaktif mengajak bicara karyawan yang sudah masuk masa kerja 4 hingga 5 tahun. Jangan menunggu mereka tidak puas dulu baru diajak diskusi. Seringkali kelompok ini terlihat stabil di permukaan, padahal sebenarnya mereka sudah berada di titik jenuh dan butuh didengarkan aspirasinya sebelum memutuskan untuk mencari peluang di tempat lain.
