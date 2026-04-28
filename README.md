@@ -88,21 +88,45 @@ Data utama yang digunakan dalam proyek ini adalah hasil dari proses pembersihan 
 * Menyiapkan Environment Proyek
 Untuk menjaga konsistensi pengerjaan, saya membagi proses ini menjadi analisis data di Google Colab dan pengelolaan database serta visualisasi di lingkungan lokal.
 
-1. Instalasi Library (Requirements)
-Saya menggunakan library spesifik agar proses manipulasi data dan pembuatan model machine learning tetap stabil. Berikut adalah daftar library yang perlu disiapkan:
+1. Membuat dan Mengaktifkan Virtual Environment
+Sebelum melakukan instalasi library, sangat saya sarankan untuk membuat virtual environment agar lingkungan pengembangan tetap terisolasi dan stabil. Anda dapat memilih salah satu metode di bawah ini:
 
-pip install pandas==2.2.2 numpy==1.26.4 scipy==1.13.0 sqlalchemy==2.0.29
-pip install matplotlib==3.8.4 seaborn==0.13.2 plotly==5.20.0
-pip install scikit-learn==1.4.2 imbalanced-learn==0.12.2 joblib==1.4.0
+a) Menggunakan Conda (Anaconda/Miniconda)
 
-2. Pengaturan Database dan Kontainerisasi
-Agar integrasi data lebih rapi dan monitoring menjadi lebih luas, saya menggunakan kombinasi SQLite dan Docker:
+   Membuat environment baru dengan python 3.9
+   - conda create --name main-ds python=3.9]
 
-* Database Karyawan (SQLite): Saya menggunakan SQLite untuk menyimpan data karyawan. Penggunaan SQLite dipilih karena ringan dan tidak memerlukan konfigurasi server yang rumit, namun tetap kuat saat diintegrasikan dengan SQLAlchemy di dalam kode Python.
+   Mengaktifkan environment
+   - conda activate main-ds
 
-* Monitoring dengan Metabase (Docker): Untuk keperluan visualisasi tambahan yang lebih dinamis, saya menjalankan Metabase melalui Docker.
+b) Menggunakan venv atau Pipenv (Terminal/Shell)
+   * Jika menggunakan Pipenv
+        pip install pipenv 
+        pipenv install 
+        pipenv shell
 
-* Persistent Data: Saya memastikan riwayat visualisasi tetap tersimpan aman di dalam database Metabase (metabase.db.mv.db) yang dikelola di dalam kontainer, sehingga data tidak hilang meskipun kontainer dimatikan.
+   * Jika menggunakan venv bawaan Python
+       python -m venv venv
+   * Windows
+      .\venv\Scripts\activate
+   * Mac/Linux
+      source venv/bin/activate
+
+3. Instalasi Library (Requirements)
+   Saya menggunakan library spesifik agar proses manipulasi data dan pembuatan model machine learning tetap stabil. Berikut adalah daftar library yang perlu disiapkan:
+
+     pip install pandas==2.2.2 numpy==1.26.4 scipy==1.13.0 sqlalchemy==2.0.29
+     pip install matplotlib==3.8.4 seaborn==0.13.2 plotly==5.20.0
+     pip install scikit-learn==1.4.2 imbalanced-learn==0.12.2 joblib==1.4.0
+
+4. Pengaturan Database dan Kontainerisasi
+   Agar integrasi data lebih rapi dan monitoring menjadi lebih luas, saya menggunakan kombinasi SQLite dan Docker:
+
+   * Database Karyawan (SQLite): Saya menggunakan SQLite untuk menyimpan data karyawan. Penggunaan SQLite dipilih karena ringan dan tidak memerlukan konfigurasi server yang rumit, namun tetap kuat saat diintegrasikan dengan SQLAlchemy di dalam kode Python.
+
+   * Monitoring dengan Metabase (Docker): Untuk keperluan visualisasi tambahan yang lebih dinamis, saya menjalankan Metabase melalui Docker.
+
+   * Persistent Data: Saya memastikan riwayat visualisasi tetap tersimpan aman di dalam database Metabase (metabase.db.mv.db) yang dikelola di dalam kontainer, sehingga data tidak hilang meskipun kontainer dimatikan.
 
 Mengapa Alur Ini Digunakan?
 Saya memilih menggunakan SQLite agar database bersifat portabel dan mudah dibaca langsung dari folder proyek. Sementara itu, penggunaan Docker saya khususkan untuk menjalankan Metabase agar saya memiliki alat analisis tambahan yang terpisah dari kode utama. Dengan cara ini, lingkungan kerja menjadi lebih terorganisir antara tempat menyimpan data (SQLite) dan alat untuk memantaunya (Metabase).
@@ -149,7 +173,7 @@ Username: ana.rosyidah24@gmail.com
 Password: Rosyidah89
 
 
-## ConclusionKesimpulan Akhir Proyek: Analisis Risiko Pengunduran Diri
+## Conclusion Kesimpulan Akhir Proyek: Analisis Risiko Pengunduran Diri
 Melalui proyek ini, saya berhasil memetakan alasan-alasan di balik keluarnya karyawan yang selama ini mungkin luput dari pengawasan manajemen. Analisis ini menunjukkan bahwa penyebab resign tidak sesederhana masalah gaji saja. Berikut adalah poin-poin kesimpulannya:
 
 1. Perbedaan Karakteristik antara Karyawan Senior dan Junior
